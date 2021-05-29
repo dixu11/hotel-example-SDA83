@@ -1,5 +1,7 @@
 package com.sda.model;
 
+import java.util.Random;
+
 public class Room {
 
     private int number;
@@ -18,11 +20,13 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" +
-                "number=" + number +
-                ", size=" + size +
-                ", bathroom=" + bathroom +
-                ", available=" + available +
-                '}';
+        // warunek ? co dla true : co dla false
+        String bathroomMessage = bathroom ? "z łazienką" : "bez łazienki";
+        String availableMessage = available ? "dostępny" : "niedostępny :(";
+        return String.format("Pokój nr: %d, mieści %d osób, %s, %s",number, size,bathroomMessage,availableMessage );
+    }
+
+    public boolean isAvailable() {
+        return available;
     }
 }
