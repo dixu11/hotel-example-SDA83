@@ -15,19 +15,18 @@ public class HotelService {
     }
 
     public List<Room> getAllRooms() {
-       return hotel.getRooms();
+        return hotel.getRooms();
     }
 
-    public List<Room> getAvailableRooms(){
+    public List<Room> getAvailableRooms() {
         return hotel.getAvailableRooms();
     }
 
     public void reserveRoom(int number) throws RoomUnaviableException {
         Room room = hotel.findRoomByNumber(number);
-        if (room.isAvailable()) {
-            room.reserve();
-        } else {
+        if (!room.isAvailable()) {
             throw new RoomUnaviableException();
         }
+        room.reserve();
     }
 }
