@@ -1,5 +1,6 @@
 package com.sda.service;
 
+import com.sda.exception.RoomUnaviableException;
 import com.sda.model.Room;
 import com.sda.repository.Hotel;
 
@@ -19,5 +20,14 @@ public class HotelService {
 
     public List<Room> getAvailableRooms(){
         return hotel.getAvailableRooms();
+    }
+
+    public void reserveRoom(int number) throws RoomUnaviableException {
+        Room room = hotel.findRoomByNumber(number);
+        if (room.isAvailable()) {
+            room.reserve();
+        } else {
+            throw new RoomUnaviableException();
+        }
     }
 }

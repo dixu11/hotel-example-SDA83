@@ -46,4 +46,11 @@ public class Hotel {
                 .collect(Collectors.toList());
     }
 
+    public Room findRoomByNumber(int number) {
+        return  rooms.stream()
+                .filter(room -> room.getNumber() == number)
+                .findAny()
+                .orElseThrow(); //throw NoSuchElementException()
+    }
+
 }

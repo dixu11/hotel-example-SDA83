@@ -1,7 +1,5 @@
 package com.sda.model;
 
-import java.util.Random;
-
 public class Room {
 
     private int number;
@@ -28,5 +26,13 @@ public class Room {
 
     public boolean isAvailable() {
         return available;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void reserve() {
+        available = false;
     }
 }
